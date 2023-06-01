@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ASP_NET_Assignment1.ViewModels.ClientAccountVM>
+
+@{
+    ViewData["Title"] = "Account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+};
+
+<h1>Account Summary</h1>
+
+<p>
+    <a asp-action="Create">Add new Bank Account</a>
+</p>
+</hr>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountNum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountType)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { AccountNum = item.AccountNum}) |
+                @Html.ActionLink("Details", "Details", new { AccountNum = item.AccountNum}) |
+                @Html.ActionLink("Delete", "Delete", new { AccountNum = item.AccountNum})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
